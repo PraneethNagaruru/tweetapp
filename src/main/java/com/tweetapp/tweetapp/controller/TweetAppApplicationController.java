@@ -36,7 +36,7 @@ public class TweetAppApplicationController {
 
             return new ResponseEntity<>(usersService.storeUserDetails(userModel), HttpStatus.CREATED);
         }
-        return new ResponseEntity<>(userModel,
+        return new ResponseEntity<>("User Name already exists, Please login",
                 HttpStatus.OK);
     }
 
@@ -53,7 +53,7 @@ public class TweetAppApplicationController {
     public ResponseEntity<String> forgotPassword(@PathVariable String username, @RequestBody String newPassword){
 
         if(usersService.forgotPassword(username,newPassword)){
-            return new ResponseEntity<>("password changed",HttpStatus.OK);
+            return new ResponseEntity<>("Password changed",HttpStatus.OK);
         }
         return new ResponseEntity<>("user name not found",HttpStatus.BAD_REQUEST);
     }
